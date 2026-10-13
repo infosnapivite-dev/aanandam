@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <rect width="64" height="64" rx="12" fill="#173D2C" />
+  <text x="32" y="42" font-family="'Cormorant Garamond', Georgia, serif" font-size="28" font-weight="700" fill="#B48A4A" text-anchor="middle" letter-spacing="1">APS</text>
+  <line x1="16" y1="48" x2="48" y2="48" stroke="#B48A4A" stroke-width="1.5" stroke-linecap="round"/>
+</svg>

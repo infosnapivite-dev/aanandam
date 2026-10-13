@@ -1,0 +1,148 @@
+@import 'lenis/dist/lenis.css';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: auto !important;
+  }
+
+  :root {
+    --aps-green: #173D2C;
+    --aps-green-dark: #112F22;
+    --aps-green-light: #274C3B;
+    --aps-ivory: #F6EDE3;
+    --aps-ivory-light: #FBF6F0;
+    --aps-ivory-alt: #EFE4DA;
+    --aps-gold: #B48A4A;
+    --aps-text: #24221E;
+    --aps-text-secondary: #777268;
+    --aps-border: #DED6C8;
+  }
+
+  body {
+    background-color: #F6EDE3;
+    color: #24221E;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  .font-serif {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    letter-spacing: -0.015em;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F6EDE3;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #274C3B;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #173D2C;
+}
+
+/* Lenis Smooth Scroll Recommended Styles */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
+/* Luxury micro details */
+.gold-line {
+  height: 1px;
+  background: linear-gradient(90deg, rgba(180, 138, 74, 0) 0%, rgba(180, 138, 74, 1) 50%, rgba(180, 138, 74, 0) 100%);
+}
+
+.gold-line-solid {
+  height: 1px;
+  background-color: #B48A4A;
+}
+
+.editorial-divider {
+  border-color: #DED6C8;
+}
+
+/* Subtle image shimmer placeholder */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.skeleton-shimmer {
+  background: linear-gradient(90deg, #EADBCC 25%, #F6EDE3 50%, #EADBCC 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.8s infinite ease-in-out;
+}
+
+/* Horizontal Continuous Marquee Carousel */
+@keyframes marquee-scroll {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.animate-marquee-infinite {
+  display: flex;
+  width: max-content;
+  animation: marquee-scroll 42s linear infinite;
+  will-change: transform;
+}
+
+.animate-marquee-infinite:hover,
+.animate-marquee-infinite:focus-within {
+  animation-play-state: paused;
+}
+
+@media (max-width: 640px) {
+  .animate-marquee-infinite {
+    animation-duration: 30s;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee-infinite {
+    animation: none;
+    overflow-x: auto;
+  }
+}
