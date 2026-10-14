@@ -10,7 +10,6 @@ export default function EnquiryModal({ isOpen, onClose }) {
     email: '',
     phone: '',
     category: 'rigid-box',
-    quantity: '500',
     message: '',
   });
 
@@ -179,40 +178,22 @@ export default function EnquiryModal({ isOpen, onClose }) {
                     </div>
                   </div>
 
-                  {/* Packaging Type & Quantity */}
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
-                    <div>
-                      <label className="block text-xs font-medium text-[#24221E] uppercase tracking-wider mb-1.5">
-                        Packaging Type
-                      </label>
-                      <select
-                        value={formData.category}
-                        onChange={(e) => setFormData({ ...formData, category: e.target.value })}
-                        className="w-full px-3.5 py-2.5 rounded-lg border border-[#DED6C8] bg-white text-sm text-[#24221E] focus:outline-none focus:border-[#173D2C] focus:ring-1 focus:ring-[#173D2C] transition-all"
-                      >
-                        <option value="rigid-box">Rigid Boxes (Luxury)</option>
-                        <option value="collapsible-box">Collapsible Boxes</option>
-                        <option value="paper-bags">Custom Paper Bags</option>
-                        <option value="gifting-hampers">Gifting & Hamper Sets</option>
-                        <option value="other">Other Bespoke Needs</option>
-                      </select>
-                    </div>
-                    <div>
-                      <label className="block text-xs font-medium text-[#24221E] uppercase tracking-wider mb-1.5">
-                        Approx. Quantity
-                      </label>
-                      <select
-                        value={formData.quantity}
-                        onChange={(e) => setFormData({ ...formData, quantity: e.target.value })}
-                        className="w-full px-3.5 py-2.5 rounded-lg border border-[#DED6C8] bg-white text-sm text-[#24221E] focus:outline-none focus:border-[#173D2C] focus:ring-1 focus:ring-[#173D2C] transition-all"
-                      >
-                        <option value="250">250 units (Trial)</option>
-                        <option value="500">500 units</option>
-                        <option value="1000">1,000 units</option>
-                        <option value="2500">2,500 units</option>
-                        <option value="5000+">5,000+ units</option>
-                      </select>
-                    </div>
+                  {/* Packaging Type */}
+                  <div>
+                    <label className="block text-xs font-medium text-[#24221E] uppercase tracking-wider mb-1.5">
+                      Packaging Type
+                    </label>
+                    <select
+                      value={formData.category}
+                      onChange={(e) => setFormData({ ...formData, category: e.target.value })}
+                      className="w-full px-3.5 py-2.5 rounded-lg border border-[#DED6C8] bg-white text-sm text-[#24221E] focus:outline-none focus:border-[#173D2C] focus:ring-1 focus:ring-[#173D2C] transition-all"
+                    >
+                      <option value="rigid-box">Rigid Boxes (Luxury)</option>
+                      <option value="collapsible-box">Collapsible Boxes</option>
+                      <option value="paper-bags">Custom Paper Bags</option>
+                      <option value="gifting-hampers">Gifting & Hamper Sets</option>
+                      <option value="other">Other Bespoke Needs</option>
+                    </select>
                   </div>
 
                   {/* Message */}
