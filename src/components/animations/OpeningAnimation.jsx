@@ -11,10 +11,10 @@ export default function OpeningAnimation({ onComplete }) {
     }
     document.body.style.overflow = 'hidden';
 
-    // Timer to trigger exit animation
+    // Timer for serene, minimal display before gentle dissolve
     const timer = setTimeout(() => {
       setIsVisible(false);
-    }, 1300);
+    }, 1800);
 
     return () => {
       clearTimeout(timer);
@@ -39,74 +39,84 @@ export default function OpeningAnimation({ onComplete }) {
     <AnimatePresence onExitComplete={handleExitComplete}>
       {isVisible && (
         <motion.div
-          key="opening-curtain"
-          initial={{ y: 0 }}
-          exit={{ y: '-100%' }}
-          transition={{
-            duration: 0.85,
-            ease: [0.77, 0, 0.175, 1], // Editorial luxury shutter lift curve
+          key="opening-editorial-screen"
+          initial={{ opacity: 1 }}
+          exit={{
+            opacity: 0,
+            scale: 1.015,
+            transition: {
+              duration: 0.75,
+              ease: [0.22, 1, 0.36, 1], // Smooth luxury ease-out
+            },
           }}
           onClick={() => setIsVisible(false)}
           className="fixed inset-0 z-[99999] bg-[#F6EDE3] flex flex-col items-center justify-center cursor-pointer select-none overflow-hidden"
-          style={{ willChange: 'transform' }}
+          style={{ willChange: 'opacity, transform' }}
         >
-          {/* Subtle Ambient Radial Glow */}
-          <div className="absolute inset-0 bg-radial-gradient from-[#FAF5EF]/80 via-transparent to-transparent pointer-events-none" />
-
-          {/* Central Luxury Monogram & Brand Container */}
-          <div className="relative flex flex-col items-center text-center px-6">
-            
-            {/* Serif Monogram "APS" */}
-            <motion.div
-              initial={{ opacity: 0, y: 18, scale: 0.95 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-              className="font-serif text-5xl sm:text-6xl text-[#173D2C] font-normal tracking-tight mb-3"
+          {/* Central Minimal Brand Lockup */}
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{
+              duration: 0.9,
+              ease: [0.16, 1, 0.3, 1],
+            }}
+            className="relative flex flex-col items-center text-center px-6"
+          >
+            {/* Serif Monogram "APS" with subtle blur reveal */}
+            <motion.h1
+              initial={{ opacity: 0, y: 8, filter: 'blur(3px)' }}
+              animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+              transition={{
+                duration: 0.85,
+                delay: 0.1,
+                ease: [0.16, 1, 0.3, 1],
+              }}
+              className="font-serif text-5xl sm:text-6xl md:text-7xl text-[#173D2C] font-normal tracking-tight mb-2.5"
             >
               APS
-            </motion.div>
+            </motion.h1>
 
-            {/* Fine Metallic Gold Divider */}
+            {/* Fine Hairline Metallic Gold Divider - draws outward */}
             <motion.div
               initial={{ scaleX: 0, opacity: 0 }}
-              animate={{ scaleX: 1, opacity: 1 }}
-              transition={{ duration: 0.6, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
-              className="w-12 sm:w-16 h-[1.5px] bg-[#B48A4A] my-2 origin-center"
+              animate={{ scaleX: 1, opacity: 0.85 }}
+              transition={{
+                duration: 0.7,
+                delay: 0.3,
+                ease: [0.16, 1, 0.3, 1],
+              }}
+              className="w-10 sm:w-14 h-[1px] bg-[#B48A4A] my-2.5 origin-center"
             />
 
-            {/* Brand Title with Elegant Tracking Expansion */}
+            {/* Brand Title with Refined Tracking Expansion */}
             <motion.p
-              initial={{ opacity: 0, y: 8, letterSpacing: '0.15em' }}
-              animate={{ opacity: 1, y: 0, letterSpacing: '0.28em' }}
-              transition={{ duration: 0.7, delay: 0.35, ease: [0.22, 1, 0.36, 1] }}
-              className="text-[10px] sm:text-[11px] font-medium uppercase text-[#173D2C] mt-1 pl-[0.28em]"
+              initial={{ opacity: 0, letterSpacing: '0.2em' }}
+              animate={{ opacity: 1, letterSpacing: '0.32em' }}
+              transition={{
+                duration: 0.8,
+                delay: 0.45,
+                ease: [0.16, 1, 0.3, 1],
+              }}
+              className="text-[11px] sm:text-[12px] font-medium uppercase text-[#173D2C] mt-1 pl-[0.32em]"
             >
               Aanandam
             </motion.p>
 
             {/* Tagline */}
             <motion.p
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 0.75 }}
-              transition={{ duration: 0.6, delay: 0.5 }}
-              className="text-[8px] sm:text-[9px] font-normal tracking-[0.35em] uppercase text-[#777268] mt-1 pl-[0.35em]"
+              initial={{ opacity: 0, y: 3 }}
+              animate={{ opacity: 0.7, y: 0 }}
+              transition={{
+                duration: 0.75,
+                delay: 0.6,
+                ease: [0.16, 1, 0.3, 1],
+              }}
+              className="text-[8.5px] sm:text-[9.5px] font-normal tracking-[0.38em] uppercase text-[#777268] mt-1.5 pl-[0.38em]"
             >
               Pack Studio
             </motion.p>
-
-            {/* Minimal Progress Indicator */}
-            <div className="w-28 sm:w-36 h-[1px] bg-[#DED6C8]/60 mt-8 rounded-full overflow-hidden">
-              <motion.div
-                initial={{ width: '0%' }}
-                animate={{ width: '100%' }}
-                transition={{ duration: 1.15, ease: [0.22, 1, 0.36, 1] }}
-                className="h-full bg-[#173D2C]"
-              />
-            </div>
-          </div>
-
-          {/* Clean Bottom Edge Accent as curtain raises */}
-          <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#B48A4A]/40 to-transparent" />
+          </motion.div>
         </motion.div>
       )}
     </AnimatePresence>
